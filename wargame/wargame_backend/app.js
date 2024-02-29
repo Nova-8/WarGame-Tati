@@ -65,7 +65,7 @@ app.post('/processar-xml', (req, res) => {
 
 app.post('/register', (req, res) => {
     const { login, nome, senha } = req.body;
-    const query = `INSERT INTO tbl_user (login, nome, senha) VALUES ('${login}', '${nome}', '${senha}')`;
+    const query = 'INSERT INTO tbl_user (login, nome, senha) VALUES (?, ?, ?)';  //Corrigido
 
     db.query(query, (err, result) => {
         if (err) {
