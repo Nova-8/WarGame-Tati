@@ -94,11 +94,11 @@ function generateSessionID(userID) {
     return `${userID}-${randomPart}`;
 }
 
-app.get('/login/:login/:senha', (req, res) => {
+app.post('/login/:login/:senha', (req, res) => {   //Corrigido
     const login = req.params.login;
     const senha = req.params.senha;
 
-    const query = `SELECT nome, id FROM tbl_user WHERE login = '${login}' AND senha = '${senha}'`;
+    const query = `SELECT nome, id FROM tbl_user WHERE login = '${login}' AND senha = ?'`;   //Corrigido
 
     armazenarLog(query); 
 
